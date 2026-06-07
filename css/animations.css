@@ -1,0 +1,293 @@
+/* ============================================================
+   animations.css — All keyframes and animation utility classes
+   X 1 TKJ · SMK Negeri 1 Tuntang 2025/2026
+   ============================================================
+
+   CONTENTS
+   ──────────────────────────────────────
+   1. Keyframe definitions
+   2. Hero entrance stagger (CSS-only, no JS)
+   3. Scroll-reveal classes (toggled by JS IntersectionObserver)
+   4. Ambient / looping animation classes
+   5. Reduced-motion override
+   ──────────────────────────────────────
+*/
+
+
+/* ─────────────────────────────────────────────────────────────
+   1. KEYFRAMES
+───────────────────────────────────────────────────────────── */
+
+/* Entrance */
+@keyframes heroIn {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.93); }
+  to   { opacity: 1; transform: scale(1);    }
+}
+
+/* Ambient float — two variants for layered parallax feel */
+@keyframes floatA {
+  0%, 100% { transform: translateY(0px);   }
+  50%       { transform: translateY(-20px); }
+}
+
+@keyframes floatB {
+  0%, 100% { transform: translateY(0px);  }
+  50%       { transform: translateY(16px); }
+}
+
+/* Organic blob-morph (photo frame & decorative shapes) */
+@keyframes blobMorph {
+  0%, 100% { border-radius: 62% 38% 34% 66% / 58% 32% 68% 42%; }
+  25%       { border-radius: 46% 54% 54% 46% / 44% 56% 44% 56%; }
+  50%       { border-radius: 34% 66% 68% 32% / 52% 62% 38% 48%; }
+  75%       { border-radius: 50% 50% 42% 58% / 58% 46% 54% 42%; }
+}
+
+/* Pulsing glow (ambient blobs) */
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.40; transform: scale(1);    }
+  50%       { opacity: 0.72; transform: scale(1.05); }
+}
+
+/* Slow spin (orbit rings) */
+@keyframes spinSlow {
+  from { transform: rotate(0deg);   }
+  to   { transform: rotate(360deg); }
+}
+
+/* Shimmer sweep (card top bar, gradient text) */
+@keyframes shimmer {
+  0%   { background-position: -300% center; }
+  100% { background-position:  300% center; }
+}
+
+/* Gradient position shift (photo ring on hover) */
+@keyframes gradShift {
+  0%   { background-position: 0%   50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0%   50%; }
+}
+
+/* Bounce dot (scroll indicator thumb) */
+@keyframes bounceDot {
+  0%, 100% { transform: translateY(0);  opacity: 0.6; }
+  50%       { transform: translateY(-8px); opacity: 1;   }
+}
+
+/* Pulse dot (badge live indicator) */
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1);   opacity: 1; }
+  50%       { transform: scale(1.6); opacity: 0; }
+}
+
+/* Slide-down (mobile menu open) */
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0);     }
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   2. HERO ENTRANCE — CSS-only stagger
+      Applied directly in HTML as class pairs: hero-anim + d-N
+      No JavaScript needed — fires on first paint.
+───────────────────────────────────────────────────────────── */
+.hero-anim {
+  opacity: 0;
+  animation: heroIn 0.90s var(--ease-out-expo) forwards;
+}
+
+/* Delay ladder — add more as needed */
+.d-1  { animation-delay: 0.04s; }
+.d-2  { animation-delay: 0.14s; }
+.d-3  { animation-delay: 0.24s; }
+.d-4  { animation-delay: 0.34s; }
+.d-5  { animation-delay: 0.44s; }
+.d-6  { animation-delay: 0.54s; }
+.d-7  { animation-delay: 0.66s; }
+.d-8  { animation-delay: 0.78s; }
+.d-9  { animation-delay: 0.92s; }
+.d-10 { animation-delay: 1.08s; }
+
+
+/* ─────────────────────────────────────────────────────────────
+   3. SCROLL-REVEAL — toggled by js/animations.js
+      Initial state: invisible + shifted down.
+      JS adds .in when element enters viewport.
+      Stagger via .d1, .d2, .d3 sibling delays.
+───────────────────────────────────────────────────────────── */
+.sr {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity   0.70s var(--ease-out-expo),
+    transform 0.70s var(--ease-out-expo);
+}
+
+.sr.in { opacity: 1; transform: translateY(0); }
+
+/* Sibling stagger delays (add class to child elements) */
+.sr.d1.in { transition-delay: 0.08s; }
+.sr.d2.in { transition-delay: 0.16s; }
+.sr.d3.in { transition-delay: 0.24s; }
+.sr.d4.in { transition-delay: 0.32s; }
+.sr.d5.in { transition-delay: 0.40s; }
+
+/* Variants */
+.sr-scale {
+  opacity: 0;
+  transform: scale(0.94);
+  transition:
+    opacity   0.65s var(--ease-out-expo),
+    transform 0.65s var(--ease-out-expo);
+}
+.sr-scale.in { opacity: 1; transform: scale(1); }
+
+.sr-left {
+  opacity: 0;
+  transform: translateX(-24px);
+  transition:
+    opacity   0.65s var(--ease-out-expo),
+    transform 0.65s var(--ease-out-expo);
+}
+.sr-left.in { opacity: 1; transform: translateX(0); }
+
+.sr-right {
+  opacity: 0;
+  transform: translateX(24px);
+  transition:
+    opacity   0.65s var(--ease-out-expo),
+    transform 0.65s var(--ease-out-expo);
+}
+.sr-right.in { opacity: 1; transform: translateX(0); }
+
+
+/* ─────────────────────────────────────────────────────────────
+   4. AMBIENT / LOOPING ANIMATION CLASSES
+      Applied to decorative elements — blobs, rings, dots.
+───────────────────────────────────────────────────────────── */
+.anim-float-a  { animation: floatA    7s ease-in-out  infinite; }
+.anim-float-b  { animation: floatB    9s ease-in-out  infinite; }
+.anim-pulse-g  { animation: pulseGlow 4.5s ease-in-out infinite; }
+.anim-spin-s   { animation: spinSlow  22s linear      infinite; }
+.anim-spin-rev { animation: spinSlow  32s linear      infinite reverse; }
+.anim-blob     { animation: blobMorph 10s ease-in-out infinite; }
+.anim-bounce   { animation: bounceDot 2.2s ease-in-out infinite; }
+.anim-pulse-d  { animation: pulseDot  2.5s ease-out   infinite; }
+.anim-shimmer  {
+  background-size: 300% 100%;
+  animation: shimmer 3.5s linear infinite;
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   5. REDUCED-MOTION OVERRIDE
+      Respects user OS "reduce motion" preference.
+      All animations collapse to instant / opacity-only.
+───────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration:   0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration:  0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Scroll-reveal elements appear immediately */
+  .sr, .sr-scale, .sr-left, .sr-right {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .hero-anim { opacity: 1 !important; }
+}
+
+
+/* ============================================================
+   POLISH PASS — Animation refinements
+   ============================================================ */
+
+/* ── Hero badge pulse dot: more natural rhythm ── */
+.badge-dot::after {
+  animation-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+/* ── Scroll thumb: smoother bounce ── */
+.scroll-thumb {
+  animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1);
+}
+
+/* ── Float animations: slightly different timing per blob ── */
+.blob:nth-child(1) { animation-delay:    0s; }
+.blob:nth-child(2) { animation-delay: -2.3s; }
+.blob:nth-child(3) { animation-delay: -4.7s; }
+.blob:nth-child(4) { animation-delay: -1.1s; }
+
+/* ── Orbit rings: offset timing so they don't sync ── */
+.orbit-2 { animation-delay: -8s; }
+
+/* ── Structure / member cards: stagger reveal via CSS var ── */
+.structure-card.in,
+.member-card.in {
+  transition-delay: calc(var(--i, 0) * 40ms);
+}
+
+/* ── Gallery card stagger ── */
+.gallery-card.in {
+  transition-delay: calc(var(--i, 0) * 50ms);
+}
+
+/* ── Blog card stagger ── */
+.blog-card.in {
+  transition-delay: calc(var(--i, 0) * 60ms);
+}
+
+/* ── Quote board stagger ── */
+.qboard-card.in {
+  transition-delay: calc(var(--i, 0) * 50ms);
+}
+
+/* ── Timeline items: left-slide on desktop ── */
+@media (min-width: 768px) {
+  .timeline-item:nth-child(odd)  .ti-content { transform: translateX(-20px); }
+  .timeline-item:nth-child(even) .ti-content { transform: translateX(20px); }
+  .timeline-item.in .ti-content { transform: translateX(0) !important; }
+
+  .timeline-item .ti-content {
+    transition:
+      opacity   0.65s var(--ease-out-expo),
+      transform 0.65s var(--ease-out-expo);
+    opacity: 0;
+  }
+  .timeline-item.in .ti-content { opacity: 1; }
+}
+
+/* ── Shimmer: GPU hint ── */
+.teacher-card-top-bar,
+.photo-ring {
+  will-change: background-position;
+}
+
+/* ── Hero entrance: cleaner on low-end devices ── */
+@media (max-width: 640px) {
+  .hero-anim {
+    animation-duration: 0.75s;
+  }
+}

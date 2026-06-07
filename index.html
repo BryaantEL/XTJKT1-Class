@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Website resmi kelas X 1 TKJ SMK Negeri 1 Tuntang — Tahun Ajaran 2025/2026. Komunitas pelajar Teknik Komputer dan Jaringan yang solid, kreatif, dan penuh semangat." />
+  <meta name="keywords" content="X1TKJ, SMK Negeri 1 Tuntang, TKJ, Teknik Komputer Jaringan, 2025 2026" />
+  <meta name="author" content="X 1 TKJ — SMK Negeri 1 Tuntang" />
+  <meta name="theme-color" content="#3b82f6" />
+  <meta property="og:type"        content="website" />
+  <meta property="og:title"       content="X 1 TKJ — SMK Negeri 1 Tuntang 2025/2026" />
+  <meta property="og:description" content="We sailed on an educational ship together, creating memories, building skills, and growing as one family." />
+  <meta property="og:image"       content="assets/images/og-cover.jpg" />
+  <title>X 1 TKJ — SMK Negeri 1 Tuntang 2025/2026</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+
+  <!-- CSS load order: tokens → keyframes → components → layout -->
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+
+  <!-- Dark-mode flash guard (synchronous) -->
+  <script>(function(){var t=localStorage.getItem('x1tkj-theme'),d=window.matchMedia('(prefers-color-scheme: dark)').matches;if(t==='dark'||(!t&&d))document.documentElement.classList.add('dark');}());</script>
+
+  <style>
+    /* Dark-mode variant for hero heading (no Tailwind needed) */
+    .hero-h1-name { color: #0f172a; }
+    .dark .hero-h1-name { color: #f8fafc; }
+
+    /* ── Lightbox (injected by gallery.js) ── */
+    #lightbox{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;}
+    #lightbox.open{display:flex;}
+    .lb-backdrop{position:absolute;inset:0;background:rgba(3,7,18,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);}
+    .lb-inner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:16px;max-width:min(92vw,880px);width:100%;}
+    .lb-img-wrap{position:relative;width:100%;max-height:70svh;display:flex;align-items:center;justify-content:center;}
+    #lb-img{max-width:100%;max-height:70svh;border-radius:16px;object-fit:contain;transition:opacity .3s ease;box-shadow:0 32px 80px rgba(0,0,0,.6);}
+    .lb-loader{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.4);font-size:13px;font-family:var(--font-body);opacity:0;pointer-events:none;transition:opacity .2s;}
+    .lb-loader.active{opacity:1;} .lb-loader::after{content:'Memuat…';}
+    .lb-close,.lb-prev,.lb-next{position:absolute;background:rgba(255,255,255,.1);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.12);border-radius:12px;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s,transform .15s;}
+    .lb-close:hover,.lb-prev:hover,.lb-next:hover{background:rgba(255,255,255,.2);transform:scale(1.08);}
+    .lb-close{top:-48px;right:0;width:40px;height:40px;}
+    .lb-prev{left:-52px;top:50%;transform:translateY(-50%);width:44px;height:44px;}
+    .lb-next{right:-52px;top:50%;transform:translateY(-50%);width:44px;height:44px;}
+    @media(max-width:640px){.lb-prev{left:6px;} .lb-next{right:6px;}}
+    .lb-caption{text-align:center;font-family:var(--font-body);}
+    .lb-caption p{font-size:13px;color:rgba(255,255,255,.85);font-style:italic;}
+    .lb-caption span{font-size:11px;color:rgba(255,255,255,.4);}
+    .lb-counter{font-family:var(--font-display);font-size:11px;font-weight:600;color:rgba(255,255,255,.35);letter-spacing:.06em;}
+
+    /* Gallery grid cards */
+    .gallery-card{position:relative;border-radius:16px;overflow:hidden;cursor:pointer;aspect-ratio:4/3;background:rgba(59,130,246,.05);box-shadow:0 14px 30px rgba(15,23,42,0.06);transition:transform .28s var(--ease-out-expo),box-shadow .28s ease,border-color .28s ease;}
+    .gallery-card:hover{transform:translateY(-4px);box-shadow:0 24px 55px rgba(15,23,42,0.12);}
+    .gallery-card:focus-within{box-shadow:0 22px 50px rgba(59,130,246,0.16);}
+    .gallery-card img{width:100%;height:100%;object-fit:cover;transition:transform .4s cubic-bezier(.16,1,.3,1);}
+    .gallery-card:hover img{transform:scale(1.08);}
+    .gallery-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,15,40,.65) 0%,transparent 55%);opacity:0;transform:translateY(12px);transition:opacity .28s ease,transform .28s ease;display:flex;align-items:flex-end;padding:14px;}
+    .gallery-card:hover .gallery-card-overlay{opacity:1;transform:translateY(0);}
+    .gallery-card-overlay p{font-family:var(--font-body);font-size:12px;font-weight:500;color:#fff;line-height:1.4;}
+  </style>
+</head>
+
+<body>
+  <div id="progress-bar" aria-hidden="true"></div>
+
+  <button id="back-to-top" aria-label="Kembali ke atas halaman">
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+      <path d="M9 13.5V4.5M5 8.5l4-4 4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+
+  <!-- ╔═══════════════════ NAVBAR ═══════════════════╗ -->
+  <header id="navbar" role="banner">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo" aria-label="X 1 TKJ — Beranda">
+        <div class="logo-mark" aria-hidden="true"><span>X1</span></div>
+        <div>
+          <div class="logo-text-primary">X 1 TKJ</div>
+          <div class="logo-text-sub">SMKN 1 Tuntang</div>
+        </div>
+      </a>
+
+      <ul class="nav-links" role="list" aria-label="Navigasi utama">
+        <li><a href="#hero"        class="nav-link active">Home</a></li>
+        <li><a href="#structure"   class="nav-link">Struktur</a></li>
+        <li><a href="#members"     class="nav-link">Anggota</a></li>
+        <li><a href="#gallery"     class="nav-link">Galeri</a></li>
+        <li><a href="#moments"     class="nav-link">Moments</a></li>
+        <li><a href="#interactive" class="nav-link">Blog</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button id="dark-toggle" aria-label="Switch to dark mode" title="Toggle dark / light mode"></button>
+        <a href="https://www.instagram.com/xtjkt1.exe?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="nav-ig-pill" aria-label="Follow us on Instagram">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          @xtjkt1.exe
+        </a>
+        <button id="ham-btn" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="mobile-menu">
+          <span class="ham-line"></span><span class="ham-line"></span><span class="ham-line"></span>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" role="navigation" aria-label="Navigasi mobile">
+      <div class="mobile-menu-inner">
+        <ul role="list" style="display:flex;flex-direction:column;gap:2px;">
+          <li><a href="#hero"        class="mobile-nav-link"><span class="mobile-nav-icon">🏠</span>Home</a></li>
+          <li><a href="#structure"   class="mobile-nav-link"><span class="mobile-nav-icon">🏛️</span>Struktur Kelas</a></li>
+          <li><a href="#members"     class="mobile-nav-link"><span class="mobile-nav-icon">👥</span>Anggota Kelas</a></li>
+          <li><a href="#gallery"     class="mobile-nav-link"><span class="mobile-nav-icon">📷</span>Galeri</a></li>
+          <li><a href="#moments"     class="mobile-nav-link"><span class="mobile-nav-icon">✨</span>Class Moments</a></li>
+          <li><a href="#interactive" class="mobile-nav-link"><span class="mobile-nav-icon">📝</span>Blog &amp; Quote</a></li>
+        </ul>
+        <div class="mobile-menu-divider"></div>
+        <a href="https://www.instagram.com/xtjkt1.exe?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="mobile-ig-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          Follow @xtjkt1.exe di Instagram
+        </a>
+      </div>
+    </div>
+  </header>
+  <!-- /NAVBAR -->
+
+
+  <main>
+
+    <!-- ╔═══════════════ §1 HERO ═══════════════╗ -->
+    <section id="hero" aria-labelledby="hero-heading">
+      <div class="hero-mesh" aria-hidden="true">
+        <div class="hero-grid"></div>
+        <div class="blob anim-float-a" style="width:640px;height:640px;top:-200px;left:-200px;background:radial-gradient(circle,rgba(147,197,253,.28) 0%,rgba(219,234,254,.10) 55%,transparent 100%);filter:blur(80px);"></div>
+        <div class="blob anim-float-b" style="width:480px;height:480px;top:18%;right:-140px;background:radial-gradient(circle,rgba(165,180,252,.20) 0%,transparent 70%);filter:blur(72px);"></div>
+        <div class="blob anim-pulse-g" style="width:380px;height:380px;bottom:-60px;left:25%;background:radial-gradient(circle,rgba(186,230,253,.22) 0%,transparent 65%);filter:blur(64px);"></div>
+        <div class="blob"             style="width:780px;height:780px;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(219,234,254,.12) 0%,transparent 60%);filter:blur(100px);"></div>
+      </div>
+
+      <div class="hero-container">
+        <div class="hero-grid-layout">
+
+          <div class="hero-left">
+            <div class="hero-badge hero-anim d-1">
+              <span class="badge-dot" aria-hidden="true"></span>
+              SMK Negeri 1 Tuntang &nbsp;&middot;&nbsp; TA 2025/2026
+            </div>
+
+            <h1 id="hero-heading" class="hero-heading hero-anim d-2">
+              <span class="text-gradient" style="display:block;">X&thinsp;1</span>
+              <span class="hero-h1-name" style="display:block;">TKJ</span>
+            </h1>
+
+            <p class="hero-sublabel hero-anim d-3">Teknik Komputer &amp; Jaringan</p>
+
+            <blockquote class="hero-tagline hero-anim d-4">
+              <p>"We sailed on an educational ship together, creating memories, building skills, and growing as one family."</p>
+            </blockquote>
+
+            <div class="hero-stats hero-anim d-5" role="list" aria-label="Statistik kelas">
+              <div class="stat-card" role="listitem" aria-label="35 siswa">
+                <div class="stat-icon" style="background:rgba(59,130,246,.10);" aria-hidden="true">👥</div>
+                <div><div class="stat-value">35</div><div class="stat-label">Students</div></div>
+              </div>
+              <div class="stat-card" role="listitem" aria-label="Jurusan TKJ">
+                <div class="stat-icon" style="background:rgba(99,102,241,.10);" aria-hidden="true">💻</div>
+                <div><div class="stat-value">TKJ</div><div class="stat-label">Major</div></div>
+              </div>
+              <div class="stat-card" role="listitem" aria-label="Generasi 2025/2026">
+                <div class="stat-icon" style="background:rgba(14,165,233,.10);" aria-hidden="true">🎓</div>
+                <div><div class="stat-value" style="font-size:16px;">25/26</div><div class="stat-label">Generation</div></div>
+              </div>
+            </div>
+
+            <div class="hero-cta hero-anim d-6">
+              <a href="#structure" class="btn-primary">
+                Explore Our Class
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              <a href="#gallery" class="btn-outline">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="1.5" y="1.5" width="5" height="5" rx="1.5" stroke="currentColor" stroke-width="1.7"/><rect x="9.5" y="1.5" width="5" height="5" rx="1.5" stroke="currentColor" stroke-width="1.7"/><rect x="1.5" y="9.5" width="5" height="5" rx="1.5" stroke="currentColor" stroke-width="1.7"/><rect x="9.5" y="9.5" width="5" height="5" rx="1.5" stroke="currentColor" stroke-width="1.7"/></svg>
+                Lihat Galeri
+              </a>
+            </div>
+
+            <div class="quote-widget hero-anim d-7" aria-label="Quote harian kelas">
+              <div class="quote-header">
+                <div class="quote-icon" aria-hidden="true">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="#f59e0b"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <span class="quote-label">Quote Hari Ini</span>
+                <button id="quote-refresh" aria-label="Quote berikutnya">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+                </button>
+              </div>
+              <div class="quote-body">
+                <p id="qt">Memuat quote…</p>
+                <p id="qa" class="q-author"></p>
+              </div>
+            </div>
+
+            <div class="scroll-indicator hero-anim d-9" aria-hidden="true">
+              <span class="scroll-label">Scroll</span>
+              <div class="scroll-track"><div class="scroll-thumb"></div></div>
+            </div>
+          </div>
+
+          <!-- Teacher Card -->
+          <div class="teacher-wrap hero-anim d-5">
+            <div class="orbit-ring orbit-1" aria-hidden="true"><div class="orbit-dot"></div></div>
+            <div class="orbit-ring orbit-2" aria-hidden="true"></div>
+            <article class="teacher-card" aria-label="Profil Wali Kelas Ibu Nazil Rahmiyati, S.Pd., M.Pd.">
+              <div class="teacher-card-top-bar" aria-hidden="true"></div>
+              <div class="teacher-card-meta">
+                <span class="tc-badge">Wali Kelas</span>
+                <div class="tc-dots" aria-hidden="true">
+                  <div class="tc-dot" style="background:#f87171;"></div>
+                  <div class="tc-dot" style="background:#fbbf24;"></div>
+                  <div class="tc-dot" style="background:#34d399;"></div>
+                </div>
+              </div>
+              <div class="teacher-photo-wrap">
+                <div class="photo-ring">
+                  <div class="photo-ring-inner anim-blob">
+                    <!-- ✏️ Replace src → assets/images/teacher.jpg (200×200px square) -->
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&q=80&fit=crop&crop=face"
+                         alt="Foto Ibu Nazil Rahmiyati, S.Pd., M.Pd. — Wali Kelas X 1 TKJ"
+                         width="88" height="88" loading="eager" decoding="async" />
+                  </div>
+                </div>
+              </div>
+              <div class="teacher-name-block">
+                <h2 class="teacher-name">Ibu Nazil Rahmiyati</h2>
+                <p class="teacher-credential">S.Pd., M.Pd.</p>
+                <div class="teacher-school-pill">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="#2563eb" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <span>SMK Negeri 1 Tuntang</span>
+                </div>
+              </div>
+              <div class="tc-divider"></div>
+              <p class="teacher-tribute">"Terima kasih atas bimbingan, kesabaran, dan kepercayaan yang selalu diberikan kepada kami. Ibu adalah cahaya pengarah perjalanan X 1 TKJ."</p>
+              <div class="tc-stats" aria-label="Statistik kelas">
+                <div class="tc-stat-item"><div class="tc-stat-val">35</div><div class="tc-stat-lbl">Murid</div></div>
+                <div class="tc-stat-divider" aria-hidden="true"></div>
+                <div class="tc-stat-item"><div class="tc-stat-val">X</div><div class="tc-stat-lbl">Kelas</div></div>
+                <div class="tc-stat-divider" aria-hidden="true"></div>
+                <div class="tc-stat-item"><div class="tc-stat-val">TKJ</div><div class="tc-stat-lbl">Jurusan</div></div>
+              </div>
+              <div class="tc-actions">
+                <a href="#structure" class="tc-btn tc-btn-solid">Lihat Kelas</a>
+                <a href="https://www.instagram.com/xtjkt1.exe?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="tc-btn tc-btn-ghost">Instagram</a>
+              </div>
+            </article>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <!-- /§1 HERO -->
+
+
+    <!-- ╔═════════════ §2 CLASS STRUCTURE ════════════╗ -->
+    <section id="structure" class="site-section bg-b" aria-labelledby="structure-heading">
+      <div class="section-texture" aria-hidden="true"></div>
+      <div class="container">
+        <div class="section-head sr">
+          <p class="badge">Pengurus Kelas</p>
+          <h2 id="structure-heading">Class Structure</h2>
+          <p>Mereka yang menjalankan roda kelas setiap harinya — penuh tanggung jawab, solid, dan kompak.</p>
+          <div class="section-head-divider" aria-hidden="true"></div>
+        </div>
+        <!-- Cards injected by js/sections.js renderStructure() -->
+        <div id="structure-grid" class="structure-grid" aria-label="Daftar pengurus kelas"></div>
+      </div>
+    </section>
+
+
+    <!-- ╔═════════════ §3 CLASS MEMBERS ══════════════╗ -->
+    <section id="members" class="site-section bg-a" aria-labelledby="members-heading">
+      <div class="section-texture" aria-hidden="true"></div>
+      <div class="container">
+        <div class="section-head sr">
+          <p class="badge">35 Siswa</p>
+          <h2 id="members-heading">Class Members</h2>
+          <p>Satu keluarga, satu visi, satu perjalanan. Kenali setiap anggota X 1 TKJ 2025/2026.</p>
+          <div class="section-head-divider" aria-hidden="true"></div>
+        </div>
+
+        <!-- Search bar -->
+        <div class="members-filter sr">
+          <div class="members-search" role="search">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            <input
+              id="members-search-input"
+              type="search"
+              placeholder="Cari anggota kelas…"
+              aria-label="Cari anggota kelas"
+              autocomplete="off"
+            />
+          </div>
+          <span class="members-count" id="members-count" aria-live="polite"></span>
+        </div>
+
+        <!-- Cards injected by js/sections.js renderMembers() -->
+        <div id="members-grid" class="members-grid" aria-label="Daftar anggota kelas"></div>
+      </div>
+    </section>
+
+
+    <!-- ╔═════════════ §4 GALLERY ═════════════════════╗ -->
+    <section id="gallery" class="site-section bg-b" aria-labelledby="gallery-heading">
+      <div class="section-texture" aria-hidden="true"></div>
+      <div class="container">
+        <div class="section-head sr">
+          <p class="badge">Family Class</p>
+          <h2 id="gallery-heading">Family Class Gallery</h2>
+          <p>More than classmates — we are family. Momen kebersamaan yang terabadikan.</p>
+          <div class="section-head-divider" aria-hidden="true"></div>
+        </div>
+        <!-- Cards injected by js/gallery.js initGallery() -->
+        <div id="gallery-grid" class="content-grid-3" aria-label="Galeri foto kelas"></div>
+      </div>
+    </section>
+
+
+    <!-- ╔═════════════ §5 CLASS MOMENTS ══════════════╗ -->
+    <section id="moments" class="site-section bg-a" aria-labelledby="moments-heading">
+      <div class="section-texture" aria-hidden="true"></div>
+      <div class="container">
+        <div class="section-head sr">
+          <p class="badge">Timeline</p>
+          <h2 id="moments-heading">Class Moments</h2>
+          <p>Setiap momen menyimpan cerita. Ini perjalanan X 1 TKJ yang takkan terlupakan.</p>
+          <div class="section-head-divider" aria-hidden="true"></div>
+        </div>
+        <!-- Timeline items injected by js/sections.js renderMoments() -->
+        <div id="moments-timeline" class="moments-timeline" aria-label="Timeline momen kelas"></div>
+      </div>
+    </section>
+
+
+    <!-- ╔═════════════ §6 INTERACTIVE ═════════════════╗ -->
+    <section id="interactive" class="site-section bg-b" aria-labelledby="interactive-heading">
+      <div class="section-texture" aria-hidden="true"></div>
+      <div class="container">
+        <div class="section-head sr">
+          <p class="badge">Interactive</p>
+          <h2 id="interactive-heading">Blog &amp; Guestbook</h2>
+          <p>Cerita, quote harian, dan pesan kenangan dari kita semua untuk X 1 TKJ.</p>
+          <div class="section-head-divider" aria-hidden="true"></div>
+        </div>
+
+        <!-- Tab nav -->
+        <div class="interactive-tabs sr" role="tablist" aria-label="Pilih konten interaktif">
+          <button class="itab-btn active" data-tab="blog"       role="tab" aria-selected="true"  aria-controls="tab-blog">📝 Blog</button>
+          <button class="itab-btn"        data-tab="quotes"     role="tab" aria-selected="false" aria-controls="tab-quotes">✨ Quote Board</button>
+          <button class="itab-btn"        data-tab="guestbook"  role="tab" aria-selected="false" aria-controls="tab-guestbook">💌 Guestbook</button>
+        </div>
+
+        <!-- Tab: Blog -->
+        <div id="tab-blog" class="itab-panel active" role="tabpanel" aria-label="Blog kelas">
+          <div id="blog-grid" class="blog-grid"></div>
+        </div>
+
+        <!-- Tab: Quote Board -->
+        <div id="tab-quotes" class="itab-panel" role="tabpanel" aria-label="Quote board">
+          <div id="qboard-grid" class="quote-board-grid"></div>
+        </div>
+
+        <!-- Tab: Guestbook -->
+        <div id="tab-guestbook" class="itab-panel" role="tabpanel" aria-label="Guestbook">
+          <!-- Existing entries list -->
+          <div id="gb-list" class="guestbook-list" aria-label="Pesan tamu" aria-live="polite"></div>
+
+          <!-- Submit form -->
+          <div class="gb-form-wrap sr">
+            <h3 class="gb-form-title">Tinggalkan Pesanmu 💬</h3>
+            <form id="gb-form" class="gb-form" novalidate aria-label="Form guestbook">
+              <div class="gb-anon-row">
+                <button type="button" id="gb-anon-btn" class="gb-anon-toggle" aria-label="Kirim sebagai anonim" title="Toggle anonim"></button>
+                <span>Kirim sebagai anonim</span>
+              </div>
+              <input
+                id="gb-name"
+                type="text"
+                class="gb-input"
+                placeholder="Nama kamu"
+                maxlength="60"
+                aria-label="Nama pengirim"
+              />
+              <textarea
+                id="gb-msg"
+                class="gb-textarea"
+                placeholder="Tulis pesanmu untuk X 1 TKJ…"
+                maxlength="400"
+                rows="4"
+                required
+                aria-label="Pesan"
+              ></textarea>
+              <button type="submit" class="btn-primary btn-sm gb-submit">
+                Kirim Pesan
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+              </button>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <!-- /§6 INTERACTIVE -->
+
+  </main>
+
+
+  <!-- ╔═══════════════════ FOOTER ════════════════════╗ -->
+  <footer class="footer-full" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+
+        <!-- Brand col -->
+        <div class="footer-brand">
+          <div class="logo-mark footer-brand-logo" style="margin-bottom:14px;" aria-hidden="true"><span>X1</span></div>
+          <p style="font-family:var(--font-display);font-weight:700;font-size:16px;color:var(--clr-neutral-900);margin-bottom:6px;" class="dark-text">X 1 TKJ</p>
+          <p class="footer-brand-tagline">SMK Negeri 1 Tuntang<br/>Teknik Komputer &amp; Jaringan<br/>Tahun Ajaran 2025/2026</p>
+          <div class="footer-socials">
+            <a href="https://www.instagram.com/xtjkt1.exe?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer"
+               class="footer-social-btn" aria-label="Instagram @xtjkt1.exe">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Nav col -->
+        <div>
+          <p class="footer-col-title">Navigasi</p>
+          <ul class="footer-col-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#structure">Struktur Kelas</a></li>
+            <li><a href="#members">Anggota</a></li>
+            <li><a href="#gallery">Galeri</a></li>
+            <li><a href="#moments">Class Moments</a></li>
+            <li><a href="#interactive">Blog &amp; Guestbook</a></li>
+          </ul>
+        </div>
+
+        <!-- Info col -->
+        <div>
+          <p class="footer-col-title">Informasi</p>
+          <ul class="footer-col-links">
+            <li><a href="#">SMK Negeri 1 Tuntang</a></li>
+            <li><a href="#">Jurusan TKJ</a></li>
+            <li><a href="#">Wali Kelas</a></li>
+            <li><a href="#interactive">Kirim Pesan</a></li>
+          </ul>
+        </div>
+
+      </div><!-- /footer-grid -->
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-bottom">
+        <p class="footer-bottom-copy">
+          &copy; 2025/2026 X 1 TKJ &mdash; SMK Negeri 1 Tuntang. All rights reserved.
+        </p>
+        <p class="footer-bottom-quote">
+          "Every ending becomes a memory worth remembering."
+        </p>
+      </div>
+
+    </div>
+  </footer>
+  <!-- /FOOTER -->
+
+
+  <!-- ES Module entry point (auto-deferred by type=module) -->
+  <script type="module" src="js/main.js"></script>
+
+</body>
+</html>
